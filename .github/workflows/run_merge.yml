@@ -3,6 +3,9 @@ name: Run PDF Merger
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write  # Needed to publish a public Release
+
 jobs:
   build-and-merge:
     runs-on: ubuntu-latest
@@ -26,12 +29,10 @@ jobs:
         run: |
           python merge_next_ias.py
 
-      - name: Check Output File
-        run: |
-          ls -lh Next_IAS_GS4_Merged.pdf || echo "File not found!"
-
-      - name: Upload Merged PDF Artifact
-        uses: actions/upload-artifact@v4
+      - name: Create Public Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: Next-IAS-GS4-Merged-PDF
-          path: Next_IAS_GS4_Merged.pdf
+          tag_name: v1.0.${{ github.run_number }}
+          name: Next IAS GS4 Merged PDF
+          body: "Public direct download link for Next IAS GS4 Merged PDF."
+          files: Next_IAS_GS4_Merged.pdf
