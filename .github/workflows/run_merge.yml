@@ -1,10 +1,10 @@
-name: Run PDF Merger
+name: Run Vision IAS PDF Merger
 
 on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Needed to publish a public Release
+  contents: write  # Grants permission to create public Release links
 
 jobs:
   build-and-merge:
@@ -27,12 +27,16 @@ jobs:
         env:
           PYTHONUNBUFFERED: "1"
         run: |
-          python merge_next_ias.py
+          python merge_vision_ias.py
+
+      - name: Check Output File
+        run: |
+          ls -lh Vision_IAS_GS4_Merged.pdf || echo "File not found!"
 
       - name: Create Public Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.${{ github.run_number }}
-          name: Next IAS GS4 Merged PDF
-          body: "Public direct download link for Next IAS GS4 Merged PDF."
-          files: Next_IAS_GS4_Merged.pdf
+          tag_name: vision-v1.0.${{ github.run_number }}
+          name: Vision IAS GS4 Merged PDF
+          body: "Public direct download link for all 54 Vision IAS GS4 Topper Answer Copies."
+          files: Vision_IAS_GS4_Merged.pdf
