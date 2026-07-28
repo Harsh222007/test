@@ -14,8 +14,8 @@ if not API_KEY:
 
 client = genai.Client(api_key=API_KEY)
 
-PDF_URL = "https://next-ias-appsquadz.s3.ap-south-1.amazonaws.com/file_library/pdf/original/ee21bf4c91767f03906ea17bc7230b10/58/air-56-surabhi-srivastava_test-3_gs3.pdf"
-OUTPUT_MD = "surabhi_srivastava_gs3_transcribed.md"
+PDF_URL = "https://next-ias-appsquadz.s3.ap-south-1.amazonaws.com/file_library/pdf/original/ee21bf4c91767f03906ea17bc7230b10/66/air-56-surabhi-srivastava_test-1_gs1.pdf"
+OUTPUT_MD = "surabhi_srivastava_gs1_transcribed.md"
 
 def transcribe_pdf_in_memory():
     print(f"Streaming PDF directly into RAM from URL...")
