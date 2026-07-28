@@ -3,8 +3,8 @@ import os
 import requests
 import fitz  # PyMuPDF
 
-PDF_URL = "https://next-ias-appsquadz.s3.ap-south-1.amazonaws.com/file_library/pdf/original/ee21bf4c91767f03906ea17bc7230b10/58/air-56-surabhi-srivastava_test-3_gs3.pdf"
-OUTPUT_FILE = "compressed_surabhi_srivastava_gs3.pdf"
+PDF_URL = "https://next-ias-appsquadz.s3.ap-south-1.amazonaws.com/file_library/pdf/original/ee21bf4c91767f03906ea17bc7230b10/66/air-56-surabhi-srivastava_test-1_gs1.pdf"
+OUTPUT_FILE = "compressed_surabhi_srivastava_gs1.pdf"
 
 TARGET_MIN_MB = 45.0
 TARGET_MAX_MB = 50.0
