@@ -1,7 +1,7 @@
 name: Run PDF Merger
 
 on:
-  workflow_dispatch:  # Allows manual execution via button click
+  workflow_dispatch:
 
 jobs:
   build-and-merge:
@@ -21,8 +21,14 @@ jobs:
           pip install requests pypdf
 
       - name: Run Script
+        env:
+          PYTHONUNBUFFERED: "1"
         run: |
           python merge_next_ias.py
+
+      - name: Check Output File
+        run: |
+          ls -lh Next_IAS_GS4_Merged.pdf || echo "File not found!"
 
       - name: Upload Merged PDF Artifact
         uses: actions/upload-artifact@v4
