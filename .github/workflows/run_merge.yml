@@ -1,0 +1,31 @@
+name: Run PDF Merger
+
+on:
+  workflow_dispatch:  # Allows manual execution via button click
+
+jobs:
+  build-and-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install requests pypdf
+
+      - name: Run Script
+        run: |
+          python merge_next_ias.py
+
+      - name: Upload Merged PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Next-IAS-GS4-Merged-PDF
+          path: Next_IAS_GS4_Merged.pdf
